@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>assignment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+* {box-sizing: border-box;}
+
+body {
+font-family: 'Rajdhani', sans-serif;
+ background-image: url("https://cloudfront-us-east-2.images.arcpublishing.com/reuters/IBWHB4FOKJNKVL54APDHW2J4R4.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 767px) {
+  body {
+    background-image: url("https://cloudfront-us-east-2.images.arcpublishing.com/reuters/IBWHB4FOKJNKVL54APDHW2J4R4.jpg");
+  }
+	}
+
+.header {
+  overflow: hidden;
+  background-color: #00FF00;
+  color:black;
+  padding: 20px 10px;
+  text-align:center;
+}
+
+.card a{
+
+text-align:center;
+justify-content:center;
+text-decoration:none;
+}
+.card text-center .card-body{
+width:50%;
+}
+.card-body{
+  background-color: rgba(245, 245, 245, 1);
+  opacity: .4;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+  <h2>BAYER ASSIGNMENTS</h2>
+</div>
+
+<br>
+
+<div class="container my-2">
+
+  <h1 style="background-color:white";>Employees List</h1>
+
+  <a th:href = "@{/InsertNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+
+
+  <table border="1" class = "table table-striped table-responsive-md" style="background-color:white";>
+    <thead>
+    <tr>
+      <th>
+
+          Employee First Name
+      </th>
+      <th>
+
+          Employee Last Name
+      </th>
+      <th>
+
+          Employee Email
+      </th>
+      <th>Actions 1</th>
+      <th>Actions 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${listEmployees}">
+      <td th:text="${employee.firstName}"></td>
+      <td th:text="${employee.lastName}"></td>
+      <td th:text="${employee.email}"></td>
+      <td><a th:href="@{/showEmployeeUpdate/{id}(id=${employee.id})}" class="btn btn-warning" >Update</a></td>
+      <td><a th:href="@{/deleteEmployeeDetails/{id}(id=${employee.id})}" class="btn btn-danger" >Delete</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <a href = "\main" > BACK </a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
